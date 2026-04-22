@@ -2,35 +2,46 @@
 body {
   background-color: #121212;
   color: white;
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
+  transition: background-color 0.6s ease-in-out;
 }
 
+/* ===================================================== */
+/* MOOD-BASED BACKGROUND COLORS */
+/* ===================================================== */
+
+body.mood-focus {
+  background: linear-gradient(135deg, #0f3460 0%, #16213e 100%);
+}
+
+body.mood-chill {
+  background: linear-gradient(135deg, #6a1b9a 0%, #4a148c 100%);
+}
+
+body.mood-hype {
+  background: linear-gradient(135deg, #d32f2f 0%, #ff6f00 100%);
+}
 
 /* ===================================================== */
 /* HERO SECTION */
 /* ===================================================== */
 
 .hero {
-
   height: 100vh;
 
-  background-image:
-    url("https://images.unsplash.com/photo-1506157786151-b8491531f063?w=1920&q=80");
+  background-image: url("https://images.unsplash.com/photo-1506157786151-b8491531f063?w=1920&q=80");
 
   background-size: cover;
   background-position: center;
 
   position: relative;
-
 }
 
 .hero-overlay {
-
   position: absolute;
   inset: 0;
 
-  background: rgba(0,0,0,0.6);
-
+  background: rgba(0, 0, 0, 0.6);
 }
 
 .hero-content {
@@ -49,7 +60,7 @@ body {
 }
 
 .spotify-btn {
-  background-color: #1DB954;
+  background-color: #1db954;
   border: none;
   font-weight: 600;
 }
@@ -58,17 +69,14 @@ body {
   background-color: #1ed760;
 }
 
-
 /* ===================================================== */
 /* SIDEBAR */
 /* ===================================================== */
 
 .sidebar {
-
   background: black;
   height: 100vh;
   padding: 20px;
-
 }
 
 .logo {
@@ -84,7 +92,6 @@ body {
   color: white;
 }
 
-
 /* ===================================================== */
 /* APP SECTION */
 /* ===================================================== */
@@ -98,42 +105,109 @@ body {
 }
 
 .feedback-box {
-
   background: #181818;
   padding: 15px;
   border-radius: 10px;
-
 }
 
 .playlist-box {
-
   background: #181818;
   padding: 20px;
   border-radius: 10px;
-
 }
 
 .song-row {
-
   display: flex;
   align-items: center;
   gap: 15px;
 
   padding: 10px;
+  justify-content: space-between;
+}
 
+.song-info {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  flex: 1;
 }
 
 .song-row img {
-
   width: 60px;
   height: 60px;
 
   object-fit: cover;
 
   border-radius: 6px;
-
 }
 
 .song-row:hover {
   background: #282828;
+}
+
+.like-btn {
+  background: none;
+  border: none;
+  color: #b3b3b3;
+  cursor: pointer;
+  font-size: 1.5rem;
+  transition: color 0.3s ease;
+}
+
+.like-btn:hover {
+  color: #1db954;
+}
+
+.like-btn.liked {
+  color: #1db954;
+}
+
+/* ===================================================== */
+/* SEARCH SECTION */
+/* ===================================================== */
+
+.search-section {
+  background: #181818;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.section-header h2 {
+  margin: 0;
+}
+
+.search-section input {
+  background: #282828;
+  border: 1px solid #404040;
+  color: white;
+}
+
+.search-section input::placeholder {
+  color: #b3b3b3;
+}
+
+#search-results {
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+/* ===================================================== */
+/* LIKED SONGS SECTION */
+/* ===================================================== */
+
+.liked-section {
+  background: #181818;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.liked-section h2 {
+  margin-bottom: 20px;
 }

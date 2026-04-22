@@ -1,118 +1,141 @@
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Spotify Mood Playlist</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Spotify Mood Playlist</title>
 
-  <!-- Bootstrap -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
 
-  <!-- Google Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- Google Font -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
 
-  <!-- Custom CSS -->
-  <link rel="stylesheet" href="styles.css">
-</head>
-<body>
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!-- ===================================================== -->
+    <!-- HERO SECTION (100vh) -->
+    <!-- Professional Spotify-style landing section -->
+    <!-- ===================================================== -->
 
-  <!-- ===================================================== -->
-  <!-- HERO SECTION (100vh) -->
-  <!-- Professional Spotify-style landing section -->
-  <!-- ===================================================== -->
+    <section
+      class="hero d-flex align-items-center justify-content-center text-center"
+    >
+      <div class="hero-overlay"></div>
 
-  <section class="hero d-flex align-items-center justify-content-center text-center">
+      <div class="hero-content container">
+        <h1 class="hero-title">Music for Every Mood</h1>
 
-    <div class="hero-overlay"></div>
-
-    <div class="hero-content container">
-
-      <h1 class="hero-title">Music for Every Mood</h1>
-
-      <p class="hero-subtitle">
-        Select your mood and experience a personalized Spotify playlist powered by JavaScript logic.
-      </p>
-
-      <button class="btn spotify-btn mt-3" onclick="scrollToApp()">
-        Try the Prototype
-      </button>
-
-    </div>
-
-  </section>
-
-
-  <!-- ===================================================== -->
-  <!-- APP SECTION -->
-  <!-- Student Activity Area -->
-  <!-- ===================================================== -->
-
-  <section id="app" class="app-section container-fluid">
-
-    <div class="row">
-
-      <!-- Sidebar -->
-      <div class="col-md-2 sidebar">
-
-        <h4 class="logo">Spotify</h4>
-
-        <p>Home</p>
-        <p>Search</p>
-        <p>Your Library</p>
-
-        <hr>
-
-        <p>Create Playlist</p>
-        <p>Liked Songs</p>
-
-      </div>
-
-
-      <!-- Main Content -->
-      <div class="col-md-10 main-content">
-
-        <h2>Mood-Based Playlist Generator</h2>
-
-        <p class="text-secondary">
-          Choose a mood to dynamically generate a playlist.
+        <p class="hero-subtitle">
+          Select your mood and experience a personalized Spotify playlist
+          powered by JavaScript logic.
         </p>
 
-
-        <!-- Mood Selector -->
-        <select id="mood-selector" class="form-select w-50 mb-3">
-
-          <option value="">Select a mood</option>
-          <option value="focus">Focus</option>
-          <option value="chill">Chill</option>
-          <option value="hype">Hype</option>
-
-        </select>
-
-
-        <!-- Feedback -->
-        <div id="feedback" class="feedback-box">
-          Your personalized playlist will appear here.
-        </div>
-
-
-        <!-- Playlist -->
-        <div class="playlist-box mt-4">
-
-          <h4>Playlist</h4>
-
-          <div id="playlist-container"></div>
-
-        </div>
-
+        <button class="btn spotify-btn mt-3" onclick="scrollToApp()">
+          Try the Prototype
+        </button>
       </div>
+    </section>
 
-    </div>
+    <!-- ===================================================== -->
+    <!-- APP SECTION -->
+    <!-- Student Activity Area -->
+    <!-- ===================================================== -->
 
-  </section>
+    <section id="app" class="app-section container-fluid">
+      <div class="row">
+        <!-- Sidebar -->
+        <div class="col-md-2 sidebar">
+          <h4 class="logo">Spotify</h4>
 
+          <p id="home-link">Home</p>
+          <p id="search-link">Search</p>
+          <p>Your Library</p>
 
-  <!-- JS File -->
-  <script src="script.js"></script>
+          <hr />
 
-</body>
+          <p>Create Playlist</p>
+          <p id="liked-songs-link">Liked Songs</p>
+        </div>
+
+        <!-- Main Content -->
+        <div class="col-md-10 main-content">
+          <!-- Search Section -->
+          <div
+            id="search-section"
+            class="search-section mb-4"
+            style="display: none"
+          >
+            <div class="section-header">
+              <h2>Search Songs</h2>
+              <button id="back-from-search" class="btn btn-sm spotify-btn">
+                ← Back to Playlists
+              </button>
+            </div>
+            <input
+              type="text"
+              id="search-input"
+              class="form-control"
+              placeholder="Search songs..."
+            />
+            <div id="search-results" class="mt-3"></div>
+          </div>
+
+          <!-- Liked Songs Section -->
+          <div
+            id="liked-section"
+            class="liked-section mb-4"
+            style="display: none"
+          >
+            <div class="section-header">
+              <h2>Your Liked Songs</h2>
+              <button id="back-from-liked" class="btn btn-sm spotify-btn">
+                ← Back to Playlists
+              </button>
+            </div>
+            <div id="liked-container" class="playlist-box"></div>
+          </div>
+
+          <!-- Main Playlist Section -->
+          <div id="main-section">
+            <h2>Mood-Based Playlist Generator</h2>
+
+            <p class="text-secondary">
+              Choose a mood to dynamically generate a playlist.
+            </p>
+
+            <!-- Mood Selector -->
+            <select id="mood-selector" class="form-select w-50 mb-3">
+              <option value="">Select a mood</option>
+              <option value="focus">Focus</option>
+              <option value="chill">Chill</option>
+              <option value="hype">Hype</option>
+            </select>
+
+            <!-- Feedback -->
+            <div id="feedback" class="feedback-box">
+              Your personalized playlist will appear here.
+            </div>
+
+            <!-- Playlist -->
+            <div class="playlist-box mt-4">
+              <h4>Playlist</h4>
+
+              <div id="playlist-container"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- JS File -->
+    <script src="script.js"></script>
+  </body>
 </html>
-
